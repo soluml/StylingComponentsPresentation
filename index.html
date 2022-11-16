@@ -90,10 +90,10 @@
       }
       .cssinlineeditor {
         align-items: center;
-				display: grid;
-				grid-template-columns: 1.25fr 1fr;
+        display: grid;
+        grid-template-columns: 1.25fr 1fr;
       }
-      
+
       h4 {
         text-align: left;
       }
@@ -116,8 +116,8 @@
           ")";
         font-size: 0.5em;
         font-weight: 400;
-				pointer-events: none;
-				user-select: none;
+        pointer-events: none;
+        user-select: none;
       }
 
       .cssapproach {
@@ -212,34 +212,53 @@
             applied.
           </blockquote>
           <hr />
-          <div
-            class="cssinlineeditor"
-            id="specificity"
-          >
+          <div class="cssinlineeditor" id="specificity">
             <div id="example" class="example">I'm an example! √</div>
           </div>
         </section>
         <section>
           <h3>:where/:is</h3>
-					<blockquote style="font-size: 0.75em">
-            <code>:where</code> and <code>:is</code> are specificity manipulating pseudo classes. Both match the containing elements. However, <code>:where</code> eliminates the specificity of it's
-						contained selector whereas <code>:is</code> takes the maximum selector value and adds it to the base selector.
+          <blockquote style="font-size: 0.75em">
+            <code>:where</code> and <code>:is</code> are specificity
+            manipulating pseudo classes. Both match the containing elements.
+            However, <code>:where</code> eliminates the specificity of it's
+            contained selector whereas <code>:is</code> takes the maximum
+            selector value and adds it to the base selector.
           </blockquote>
           <hr />
-          <div
-            class="cssinlineeditor"
-            id="specificity2"
-          >
-            <div id="example2" class="example2">I'm an example also! √</div>
+          <div class="cssinlineeditor" id="specificity2">
+            <div id="example2" class="example2">I'm an example 2! √</div>
+          </div>
         </section>
         <section>
           <h3>Cascade Layers</h3>
-        </section>
-        <section>
-          <h3>CSS Custom Properties</h3>
+          <blockquote style="font-size: 0.75em">
+            Cascade <code>@layer</code>'s are a recent browser addition that
+            give you the ability to define layers of specificity for your
+            selectors. The order of precedence for layers is the order in which
+            layers are declared, named or not, and lower than the styles
+            declared outside of a layer.
+          </blockquote>
+          <hr />
+          <div class="cssinlineeditor" id="specificity3">
+            <div id="example3" class="example3">I'm an example 3! √</div>
+          </div>
         </section>
         <section>
           <h3>Shadow DOM</h3>
+          <blockquote style="font-size: 0.55em">
+            The Shadow DOM allows hidden DOM trees to be attached to elements in
+            the regular DOM tree. Within these hidden DOM trees we can
+            encapsulate our styles. We can also choose to ingest outside styles
+            via the <code>::part</code> pseudo-element which represents an
+            element within a shadow tree that has a matching part attribute.
+          </blockquote>
+          <hr />
+          <div class="cssinlineeditor" id="specificity4">
+            <div>
+              <div id="example4" class="example4">I'm an example 4! √</div>
+            </div>
+          </div>
         </section>
       </div>
     </div>
@@ -265,9 +284,8 @@
 .example {
 	color: purple;
 }`,
-
         },
-				{
+        {
           el: document.getElementById("specificity2"),
           cssValue: `div:is(#example2) {
 	color: green;
@@ -280,7 +298,32 @@ div:where(#example2) {
 #example2 {
 	color: purple;
 }`,
+        },
+        {
+          el: document.getElementById("specificity3"),
+          cssValue: `.example3 {
+	color: purple;
+}
 
+@layer {
+  #example3 {
+	  color: gold;
+  }
+}`,
+        },
+        {
+          el: document.getElementById("specificity4"),
+          cssValue: `#example4 {
+	color: gold;
+}
+
+.example4 {
+	color: purple;
+}
+
+::part(example4) {
+	color: green;
+}`,
         },
       ];
 
@@ -301,10 +344,10 @@ div:where(#example2) {
 
         Array.from(selectorEls).forEach((sel) => {
           if (!sel.children.length && sel.innerText.trim()) {
-						const str = sel.innerText
+            const str = sel.innerText;
 
             const specificity = calculate(str)[0];
-						const isWhereOrIs = str == ':is' || str == ':where'
+            const isWhereOrIs = str == ":is" || str == ":where";
 
             specificity.specificityArray.forEach((v, i) => {
               sel.dataset["spec" + i] = isWhereOrIs ? 0 : v;
@@ -315,9 +358,17 @@ div:where(#example2) {
 
       elements.forEach(({ el }) => {
         el.addEventListener("input", (evt) => onInput(evt.target));
-				el.addEventListener("focusout", (evt) => onInput(evt.target));
+        el.addEventListener("focusout", (evt) => onInput(evt.target));
         onInput(el);
       });
+
+      // Do shadow dom for example 4
+      const shadowCnt = document.getElementById("example4");
+      const shadowTarget = shadowCnt.parentElement;
+      const shadow = shadowTarget.attachShadow({ mode: "open" });
+
+      shadowCnt.setAttribute("part", "example4");
+      shadow.appendChild(shadowCnt);
     </script>
   </body>
 </html>
