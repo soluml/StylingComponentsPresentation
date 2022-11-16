@@ -116,6 +116,8 @@
           ")";
         font-size: 0.5em;
         font-weight: 400;
+				pointer-events: none;
+				user-select: none;
       }
 
       .cssapproach {
@@ -313,6 +315,7 @@ div:where(#example2) {
 
       elements.forEach(({ el }) => {
         el.addEventListener("input", (evt) => onInput(evt.target));
+				el.addEventListener("focusout", (evt) => onInput(evt.target));
         onInput(el);
       });
     </script>
