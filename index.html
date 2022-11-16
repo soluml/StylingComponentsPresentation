@@ -118,6 +118,24 @@
         font-size: 0.5em;
         font-weight: 400;
       }
+
+      .cssapproach {
+        align-items: center;
+        color: rgba(255, 0, 0, 0.85);
+        display: flex;
+        font-weight: 400;
+        gap: 0.1em;
+        font-size: 3em;
+        position: absolute;
+        right: 100%;
+        bottom: 0;
+        transform: translate(-20%, 12%);
+      }
+
+      .cssapproach small {
+        font-size: 0.31em;
+        font-weight: 300;
+      }
     </style>
   </head>
   <body>
@@ -149,25 +167,34 @@
         </section>
         <section>
           <h2>What are we covering?</h2>
-          <ul style="display: block; width: 30ch; margin: auto">
+          <ol
+            style="
+              display: block;
+              width: 30ch;
+              margin: auto;
+              position: relative;
+            "
+          >
+            <li class="fragment">Relevant CSS Concepts</li>
             <li class="fragment">Popular CSS Conventions</li>
-            <li class="fragment">Popular CSS Frameworks</li>
-            <li class="fragment">Popular CSS Tooling</li>
-          </ul>
+            <li class="fragment">
+              Popular CSS Frameworks / Tooling
+              <div class="fragment cssapproach"><small>Approach</small> {</div>
+            </li>
+          </ol>
         </section>
         <section>
           <h2>Considerations when <br />stylin’ components:</h2>
           <ol>
             <li class="fragment">Manages <u>Specificity</u> and the Cascade</li>
-            <li class="fragment">High Reusability</li>
             <li class="fragment">Highly Maintainable (Updating/Refactoring)</li>
             <li class="fragment">
-              Good <abbr title="Developer Experience">DX</abbr>
+              Good <abbr title="Developer Experience">DX</abbr> [Inputs]
               <small style="vertical-align: middle">
                 (i.e. Style Colocation)
               </small>
             </li>
-            <li class="fragment">Low Bloat / Small Size</li>
+            <li class="fragment">Low Bloat / Small Size [Outputs]</li>
           </ol>
         </section>
         <section>
@@ -188,6 +215,15 @@
           >
             <div id="example" class="example">I'm an example! √</div>
           </div>
+        </section>
+        <section>
+          <h3>Cascade Layers</h3>
+        </section>
+        <section>
+          <h3>CSS Custom Properties</h3>
+        </section>
+        <section>
+          <h3>Shadow DOM</h3>
         </section>
       </div>
     </div>
