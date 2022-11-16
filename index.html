@@ -7,7 +7,7 @@
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
     />
 
-    <title>Styling Components</title>
+    <title>Stylin’ Components</title>
 
     <link rel="stylesheet" href="dist/reset.css" />
     <link rel="stylesheet" href="dist/reveal.css" />
@@ -106,13 +106,13 @@
         width: 100%;
       }
 
-      span[class^="hljs-selector"][data-spec0] {
+      span[class^="hljs-selector"][data-spec0]:not(:has([data-spec0])) {
         align-items: baseline;
         display: inline-flex;
         gap: 0.25em;
       }
 
-      span[class^="hljs-selector"][data-spec0]::after {
+      span[class^="hljs-selector"][data-spec0]:not(:has([data-spec0]))::after {
         content: "(" attr(data-spec1) "," attr(data-spec2) "," attr(data-spec3)
           ")";
         font-size: 0.5em;
@@ -148,26 +148,27 @@
           />
         </section>
         <section>
-          <h2>What qualities are we looking for?</h2>
-          <ol>
-            <li class="fragment">Manages <u>Specificity</u> and the Cascade</li>
-            <li class="fragment">
-              High Maintainability (Updating/Refactoring)
-            </li>
-            <li class="fragment">High Reusability / Colocation</li>
-            <li class="fragment">Low Bloat / Small Size</li>
-            <li class="fragment">Good DX</li>
-          </ol>
+          <h2>What are we covering?</h2>
+          <ul style="display: block; width: 30ch; margin: auto">
+            <li class="fragment">Popular CSS Conventions</li>
+            <li class="fragment">Popular CSS Frameworks</li>
+            <li class="fragment">Popular CSS Tooling</li>
+          </ul>
         </section>
         <section>
-          Slide 2
-          <aside class="notes">
-            <p>Some notes</p>
-          </aside>
-          <p>Some slide text</p>
-          <aside class="notes">
-            <p>and some more notes</p>
-          </aside>
+          <h2>Considerations when <br />stylin’ components:</h2>
+          <ol>
+            <li class="fragment">Manages <u>Specificity</u> and the Cascade</li>
+            <li class="fragment">Highly Maintainable (Updating/Refactoring)</li>
+            <li class="fragment">High Reusability</li>
+            <li class="fragment">
+              Good <abbr title="Developer Experience">DX</abbr>
+              <small style="vertical-align: middle">
+                (i.e. Style Colocation)
+              </small>
+            </li>
+            <li class="fragment">Low Bloat / Small Size</li>
+          </ol>
         </section>
         <section>
           <h3>Specificity</h3>
@@ -207,11 +208,11 @@
       el.insertBefore(
         RevealCSSSnippet({
           cssValue: `#example {
-	color: #fff;
+	color: #ff0;
 }
 
 .example {
-	color: #0f0;
+	color: #f0f;
 }`,
         }),
         el.querySelector("div")
@@ -224,7 +225,7 @@
         const selectorEls = el.querySelectorAll('span[class^="hljs-selector"]');
 
         Array.from(selectorEls).forEach((sel) => {
-          if (!sel.children.length) {
+          if (!sel.children.length && sel.innerText.trim()) {
             const specificity = calculate(sel.innerText)[0];
 
             specificity.specificityArray.forEach((v, i) => {
