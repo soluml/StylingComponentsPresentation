@@ -7,7 +7,7 @@
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
     />
 
-    <title>reveal.js</title>
+    <title>Styling Components</title>
 
     <link rel="stylesheet" href="dist/reset.css" />
     <link rel="stylesheet" href="dist/reveal.css" />
@@ -16,6 +16,96 @@
     <!-- Theme used for syntax highlighted code -->
     <link rel="stylesheet" href="plugin/highlight/monokai.css" />
     <style>
+      body {
+        font-weight: 300;
+      }
+
+      #introslide {
+        width: 100%;
+        height: 100%;
+        top: 0 !important;
+      }
+      #intro {
+        border: 1.8vmax solid transparent;
+        box-sizing: border-box;
+        margin: auto;
+        left: 50%;
+        position: absolute;
+        text-align: left;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        white-space: nowrap;
+        width: 70%;
+      }
+
+      #intro:after {
+        border: inherit;
+        box-sizing: inherit;
+        content: "";
+        display: block;
+        padding-bottom: 100%;
+      }
+
+      #intro span {
+        font-size: 100%;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        text-align: center;
+        font-weight: 900;
+        transform: translate(-50%, -35%);
+        -webkit-text-stroke: 2px rgba(255, 255, 255, 0.8);
+        color: var(--r-background-color);
+      }
+
+      #intro small {
+        display: block;
+        font-size: 0.75em;
+        line-height: 1;
+      }
+
+      #intro svg text {
+        bottom: 0;
+        fill: #fff;
+        display: block;
+        font-size: 0.0575rem;
+        letter-spacing: 0.035em;
+        text-transform: none;
+        transform: translateY(2em);
+        width: 100%;
+      }
+
+      #intro svg {
+        opacity: 0.6;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+      }
+
+      .classCodeTitle {
+        text-align: center !important;
+        text-shadow: none;
+      }
+      #specificity {
+        align-items: center;
+        display: flex;
+      }
+      #specificity > * {
+        flex: 1;
+      }
+      h4 {
+        text-align: left;
+      }
+
+      h4 + ul {
+        display: block;
+        margin-bottom: 1em !important;
+        text-align: left;
+        width: 100%;
+      }
+
       span[class^="hljs-selector"][data-spec0] {
         align-items: baseline;
         display: inline-flex;
@@ -33,7 +123,42 @@
   <body>
     <div class="reveal">
       <div class="slides">
-        <section>Slide 1</section>
+        <section id="introslide">
+          <h1 id="intro">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+              <path
+                fill="#eee"
+                d="M2.667 8l13.94-8 13.94 8 0.12 15.933-14.060 8.067-13.94-8zM5.451 11.308v6.343l4.46 2.48v4.688l5.296 3.061v-11.029zM27.769 11.308l-9.756 5.543v11.029l5.296-3.061v-4.685l4.46-2.481zM6.845 8.801l9.737 5.525 9.76-5.573-5.161-2.929-4.547 2.593-4.573-2.624z"
+              ></path>
+              <text x="5.1" y="31.6">
+                github.com/soluml/StylingComponentsPresentation
+              </text>
+            </svg>
+            <span>
+              <small>Stylin’</small>
+              Components
+            </span>
+          </h1>
+        </section>
+        <section>
+          <img
+            alt="CSS is awesome"
+            src="/css-is-awesome.jpg"
+            style="height: 60vh; aspect-ratio: 1088/826; opacity: 0.8"
+          />
+        </section>
+        <section>
+          <h2>What qualities are we looking for?</h2>
+          <ol>
+            <li class="fragment">Manages <u>Specificity</u> and the Cascade</li>
+            <li class="fragment">
+              High Maintainability (Updating/Refactoring)
+            </li>
+            <li class="fragment">High Reusability / Colocation</li>
+            <li class="fragment">Low Bloat / Small Size</li>
+            <li class="fragment">Good DX</li>
+          </ol>
+        </section>
         <section>
           Slide 2
           <aside class="notes">
@@ -45,8 +170,8 @@
           </aside>
         </section>
         <section>
-          <h3><u>Specificity</u>?</h3>
-          <blockquote>
+          <h3>Specificity</h3>
+          <blockquote style="font-size: 0.75em">
             Specificity is the means by which browsers decide which CSS property
             values are the most relevant to an element and, therefore, will be
             applied.
@@ -111,8 +236,6 @@
 
       el.addEventListener("input", onInput);
       onInput();
-
-      console.log(calculate(`.example {color: #0f0!important;}`));
     </script>
   </body>
 </html>
