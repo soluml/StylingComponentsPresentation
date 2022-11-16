@@ -88,13 +88,12 @@
         text-align: center !important;
         text-shadow: none;
       }
-      #specificity {
+      .cssinlineeditor {
         align-items: center;
-        display: flex;
+				display: grid;
+				grid-template-columns: 1.25fr 1fr;
       }
-      #specificity > * {
-        flex: 1;
-      }
+      
       h4 {
         text-align: left;
       }
@@ -130,11 +129,14 @@
         right: 100%;
         bottom: 0;
         transform: translate(-20%, 12%);
+        text-align: right;
       }
 
       .cssapproach small {
         font-size: 0.31em;
         font-weight: 300;
+        line-height: 1;
+        padding-top: 0.25em;
       }
     </style>
   </head>
@@ -179,7 +181,9 @@
             <li class="fragment">Popular CSS Conventions</li>
             <li class="fragment">
               Popular CSS Frameworks / Tooling
-              <div class="fragment cssapproach"><small>Approach</small> {</div>
+              <div class="fragment cssapproach">
+                <small>CSS Approaches</small> {
+              </div>
             </li>
           </ol>
         </section>
@@ -188,6 +192,7 @@
           <ol>
             <li class="fragment">Manages <u>Specificity</u> and the Cascade</li>
             <li class="fragment">Highly Maintainable (Updating/Refactoring)</li>
+            <li class="fragment">Flexibility</li>
             <li class="fragment">
               Good <abbr title="Developer Experience">DX</abbr> [Inputs]
               <small style="vertical-align: middle">
@@ -206,15 +211,24 @@
           </blockquote>
           <hr />
           <div
+            class="cssinlineeditor"
             id="specificity"
-            style="
-              align-items: center;
-              display: grid;
-              grid-template-columns: 1fr 1fr;
-            "
           >
             <div id="example" class="example">I'm an example! √</div>
           </div>
+        </section>
+        <section>
+          <h3>:where/:is</h3>
+					<blockquote style="font-size: 0.75em">
+            <code>:where</code> and <code>:is</code> are specificity manipulating pseudo classes. Both match the containing elements. However, <code>:where</code> eliminates the specificity of it's
+						contained selector whereas <code>:is</code> takes the maximum selector value and adds it to the base selector.
+          </blockquote>
+          <hr />
+          <div
+            class="cssinlineeditor"
+            id="specificity2"
+          >
+            <div id="example2" class="example2">I'm an example also! √</div>
         </section>
         <section>
           <h3>Cascade Layers</h3>
@@ -239,10 +253,9 @@
         plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
       });
 
-      var el = document.getElementById("specificity");
-
-      el.insertBefore(
-        RevealCSSSnippet({
+      const elements = [
+        {
+          el: document.getElementById("specificity"),
           cssValue: `#example {
 	color: gold;
 }
@@ -250,18 +263,44 @@
 .example {
 	color: purple;
 }`,
-        }),
-        el.querySelector("div")
-      );
+
+        },
+				{
+          el: document.getElementById("specificity2"),
+          cssValue: `div:is(#example2) {
+	color: white;
+}
+
+div:where(#example2) {
+	color: gold;
+}
+
+#example2 {
+	color: purple;
+}`,
+
+        },
+      ];
+
+      elements.forEach(({ el, cssValue }) => {
+        el.insertBefore(
+          RevealCSSSnippet({ cssValue }),
+          el.querySelector("div")
+        );
+      });
     </script>
     <script type="module">
       import { calculate } from "./node_modules/specificity/dist/specificity.mjs";
 
-      function onInput() {
-        const selectorEls = el.querySelectorAll('span[class^="hljs-selector"]');
+      function onInput(el) {
+        const selectorEls = el.querySelectorAll(
+          'code > span[class^="hljs-selector"]'
+        );
 
         Array.from(selectorEls).forEach((sel) => {
           if (!sel.children.length && sel.innerText.trim()) {
+            console.log(sel.innerText);
+
             const specificity = calculate(sel.innerText)[0];
 
             specificity.specificityArray.forEach((v, i) => {
@@ -271,8 +310,10 @@
         });
       }
 
-      el.addEventListener("input", onInput);
-      onInput();
+      elements.forEach(({ el }) => {
+        el.addEventListener("input", (evt) => onInput(evt.target));
+        onInput(el);
+      });
     </script>
   </body>
 </html>
