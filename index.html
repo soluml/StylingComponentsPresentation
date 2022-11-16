@@ -268,7 +268,7 @@
 				{
           el: document.getElementById("specificity2"),
           cssValue: `div:is(#example2) {
-	color: white;
+	color: green;
 }
 
 div:where(#example2) {
@@ -299,12 +299,13 @@ div:where(#example2) {
 
         Array.from(selectorEls).forEach((sel) => {
           if (!sel.children.length && sel.innerText.trim()) {
-            console.log(sel.innerText);
+						const str = sel.innerText
 
-            const specificity = calculate(sel.innerText)[0];
+            const specificity = calculate(str)[0];
+						const isWhereOrIs = str == ':is' || str == ':where'
 
             specificity.specificityArray.forEach((v, i) => {
-              sel.dataset["spec" + i] = v;
+              sel.dataset["spec" + i] = isWhereOrIs ? 0 : v;
             });
           }
         });
