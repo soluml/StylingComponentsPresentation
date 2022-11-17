@@ -772,6 +772,15 @@ div > .class > p {
                 inherited.
               </li>
               <li>Can be targeted outside via <code>::part</code>.</li>
+              <li>
+                Is leveraged in several JS Frameworks (see:
+                <a href="https://polymer-library.polymer-project.org/"
+                  >Polymer</a
+                >
+                and
+                <a href="https://angular.io/guide/view-encapsulation">Angular</a
+                >)
+              </li>
             </ul>
             <pre><code class="js">/* Explicitly Global */
 const shadowTarget = document.getElementById("target");
@@ -912,6 +921,30 @@ const shadow = shadowTarget.attachShadow({ mode: "open" });
                 Amazing!!! Far and away the best output for size!
               </li>
             </ul>
+          </section>
+          <section>
+            <h3>CSS-in-JS</h3>
+            <div style="display: flex; gap: 0.5em">
+              <pre><code class="html">&lt;!-- Atomic w/Atomizer --&gt;
+&lt;div class="Bgc(#000) C(#fff)"&gt;
+  Lorem ipsum
+&lt;/div&gt;</code></pre>
+              <pre><code style="overflow: visible;" class="css">/* Utility Classes */        
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
+
+.visuallycenter {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}</code></pre>
+            </div>
           </section>
         </section>
       </div>
