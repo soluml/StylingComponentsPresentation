@@ -708,6 +708,44 @@ div > .class > p {
   }
 }</code></pre>
           </section>
+          <section>
+            <h4>Scoped Tooling: CSS Modules</h4>
+            <ul style="font-size: 0.7em">
+              <li>
+                A
+                <a href="https://github.com/css-modules/css-modules"
+                  >CSS Module</a
+                >
+                is a CSS file in which all class names and animation names are
+                scoped locally by default.
+              </li>
+              <li>
+                CSS Modules compile to a low-level interchange format called
+                ICSS or
+                <a href="https://github.com/css-modules/icss"
+                  >Interoperable CSS</a
+                >, but are written like normal CSS files.
+              </li>
+              <li>
+                Has a <code>composes</code> property to establish class name
+                dependencies.
+              </li>
+            </ul>
+            <pre><code class="css">/* Explicitly Global */
+:global {
+  .global-class-name { color: green; }
+}
+/* Explicitly Local */
+:local {
+  .scoped-class-name { color: red; }
+}
+/* Tooling Default: Either Global or Local */
+.default-class-name {
+  composes: className from "./style.css";
+  color: blue;
+}
+</code></pre>
+          </section>
         </section>
       </div>
     </div>
