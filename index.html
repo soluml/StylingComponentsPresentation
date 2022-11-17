@@ -140,6 +140,72 @@
         line-height: 1;
         padding-top: 0.25em;
       }
+
+      .iconlist.iconlist {
+        font-size: 0.7em;
+        list-style: none;
+      }
+
+      .iconlist ::before {
+        background-repeat: no-repeat;
+        background-size: contain;
+        content: "";
+        display: inline-block;
+        vertical-align: middle;
+        height: 1em;
+        width: 1em;
+        margin: -0.25em 0 0 -1em;
+      }
+
+      .sac::before {
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='white' d='M18 4v16h-4v-16h4zM14 28h4v-4h-4v4z'%3E%3C/path%3E%3C/svg%3E");
+      }
+      .sac.bad::before {
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='red' d='M18 4v16h-4v-16h4zM14 28h4v-4h-4v4z'%3E%3C/path%3E%3C/svg%3E");
+      }
+      .sac.good::before {
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='green' d='M18 4v16h-4v-16h4zM14 28h4v-4h-4v4z'%3E%3C/path%3E%3C/svg%3E");
+      }
+
+      .man::before {
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='white' d='M14.586 20.243l2.828 2.828-2.828 2.828-2.828-2.828-2.828 2.828-2.828-2.828 2.828-2.828-2.828-2.828 2.828-2.828 2.828 2.828 11.313-11.315 2.828 2.828-11.313 11.315z'%3E%3C/path%3E%3C/svg%3E");
+      }
+      .man.bad::before {
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='red' d='M14.586 20.243l2.828 2.828-2.828 2.828-2.828-2.828-2.828 2.828-2.828-2.828 2.828-2.828-2.828-2.828 2.828-2.828 2.828 2.828 11.313-11.315 2.828 2.828-11.313 11.315z'%3E%3C/path%3E%3C/svg%3E");
+      }
+      .man.good::before {
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='green' d='M14.586 20.243l2.828 2.828-2.828 2.828-2.828-2.828-2.828 2.828-2.828-2.828 2.828-2.828-2.828-2.828 2.828-2.828 2.828 2.828 11.313-11.315 2.828 2.828-11.313 11.315z'%3E%3C/path%3E%3C/svg%3E");
+      }
+
+      .flex::before {
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='white' d='M28 12v12h-12v-4h8v-4h-8v-4h12zM8 16v-4h8v-4h-12v12h12v-4h-8z'%3E%3C/path%3E%3C/svg%3E");
+      }
+      .flex.bad::before {
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='red' d='M28 12v12h-12v-4h8v-4h-8v-4h12zM8 16v-4h8v-4h-12v12h12v-4h-8z'%3E%3C/path%3E%3C/svg%3E");
+      }
+      .flex.good::before {
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='green' d='M28 12v12h-12v-4h8v-4h-8v-4h12zM8 16v-4h8v-4h-12v12h12v-4h-8z'%3E%3C/path%3E%3C/svg%3E");
+      }
+
+      .dx::before {
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='white' d='M26 12v16h-4v-16h4zM6 20h4v-16h-4v16zM16 20h4v-4h-4v4z'%3E%3C/path%3E%3C/svg%3E");
+      }
+      .dx.bad::before {
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='red' d='M26 12v16h-4v-16h4zM6 20h4v-16h-4v16zM16 20h4v-4h-4v4z'%3E%3C/path%3E%3C/svg%3E");
+      }
+      .dx.good::before {
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='green' d='M26 12v16h-4v-16h4zM6 20h4v-16h-4v16zM16 20h4v-4h-4v4z'%3E%3C/path%3E%3C/svg%3E");
+      }
+
+      .size::before {
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='white' d='M28 13l-12 12-12-12 6-6 6 6.173 6-6.173 6 6z'%3E%3C/path%3E%3C/svg%3E");
+      }
+      .size.bad::before {
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='red' d='M28 13l-12 12-12-12 6-6 6 6.173 6-6.173 6 6z'%3E%3C/path%3E%3C/svg%3E");
+      }
+      .size.good::before {
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='green' d='M28 13l-12 12-12-12 6-6 6 6.173 6-6.173 6 6z'%3E%3C/path%3E%3C/svg%3E");
+      }
     </style>
   </head>
   <body>
@@ -341,24 +407,26 @@ var styles = {
           </section>
           <section>
             <h4>Inline as an Output:</h4>
-            <ul style="font-size: 0.7em">
-              <li>
+            <ul class="iconlist">
+              <li class="sac good">
                 High specificity means Inline Styles are essentially immune to
                 specificity and cascade issues!
               </li>
-              <li>
+              <li class="man good">
                 Extremely high maintainability! Easy to update AND refactor!
               </li>
-              <li>
+              <li class="flex">
                 Hard to augment with external libraries but won't interfere with
                 others.
               </li>
-              <li>No support for @rules, pseudo-elements/classes!!</li>
-              <li>
+              <li class="flex bad">
+                No support for @rules, pseudo-elements/classes!!
+              </li>
+              <li class="dx">
                 DX is decent. Easy to locate contextual styles. Can be tough to
                 use with IDE tooling.
               </li>
-              <li>
+              <li class="size">
                 Only the CSS neccessary to style the element is used! However,
                 it bloats the DOM which is often uncached and no tooling
                 optimizations can be performed.
