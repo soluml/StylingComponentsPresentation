@@ -194,7 +194,7 @@
           <ol>
             <li class="fragment">Manages <u>Specificity</u> and the Cascade</li>
             <li class="fragment">Highly Maintainable (Updating/Refactoring)</li>
-            <li class="fragment">Flexibility</li>
+            <li class="fragment">Flexibility / Usability</li>
             <li class="fragment">
               Good <abbr title="Developer Experience">DX</abbr> [Inputs]
               <small style="vertical-align: middle">
@@ -283,35 +283,8 @@ const styles = {
 </code></pre>
             </div>
           </section>
-
           <section>
-            <h4>Inline as Inputs:</h4>
-            <div
-              style="
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                font-size: 0.7em;
-              "
-            >
-              <ul>
-                <li>Essentially immune to specificity and the cascade</li>
-                <li>Only the CSS neccessary to style the element is used</li>
-                <li>
-                  Extremely high maintainability! Easy to update AND refactor!
-                </li>
-              </ul>
-              <ul>
-                <li>Essentially immune to specificity and the cascade</li>
-                <li>Only the CSS neccessary to style the element is used</li>
-                <li>
-                  Extremely high maintainability! Easy to update AND refactor!
-                </li>
-              </ul>
-            </div>
-          </section>
-
-          <section>
-            <h4>Inline Breakdown:</h4>
+            <h4>Inline Convention:</h4>
             <ul>
               <li>
                 Inline conventions make use of the style attribute on HTML
@@ -320,60 +293,77 @@ const styles = {
                   style="display: inline"
                 ><code class="html" style="display:inline;">&lt;div style="color:blue;"&gt;</code></pre>
               </li>
-              <li>Only the CSS neccessary to style the element is used</li>
-              <li>
-                This convention was spurred on by SPA frameworks, most notably
-                React
-              </li>
             </ul>
           </section>
           <section>
-            <h3>Inline</h3>
-            <h4>Pros:</h4>
-            <ul>
-              <li>Essentially immune to specificity issues</li>
+            <h4>Inline Tooling:</h4>
+            <ul style="font-size: 0.7em">
+              <li>
+                Inline tools construct a JavaScript object and render the
+                contents into the style attribute:
+              </li>
+              <li>
+                CSS-in-JS, as a concept, was
+                <a href="https://speakerdeck.com/vjeux/react-css-in-js"
+                  >born as inline tooling</a
+                >.
+              </li>
+              <li>
+                Early CSS-in-JS tooling, like
+                <a href="https://github.com/FormidableLabs/radium">Radium</a>,
+                leveraged Inline styles.
+              </li>
+              <li>
+                It's common for Inline tooling to shim features like Media
+                Queries and Pseudo Classes with JavaScript.
+              </li>
+            </ul>
+            <div style="display: grid; grid-template-columns: 1fr 1fr">
+              <pre><code class="js">// React
+var styles = {
+  background: 'blue',
+  border: 0,
+  color: 'white',
+  // No pseudo's... :(
+};</code></pre>
+              <pre><code class="js">// Radium
+var styles = {
+  base: {
+    background: 'blue',
+    border: 0,
+    color: 'white',
+    ':hover': { // or :focus/:active
+      backgroundColor: 'red'
+    },
+  },
+};</code></pre>
+            </div>
+          </section>
+          <section>
+            <h4>Inline as an Output:</h4>
+            <ul style="font-size: 0.7em">
+              <li>
+                High specificity means Inline Styles are essentially immune to
+                specificity and cascade issues!
+              </li>
               <li>
                 Extremely high maintainability! Easy to update AND refactor!
               </li>
               <li>
-                With tools like Radium, styles are easily reusable as a JS
-                object!
+                Hard to augment with external libraries but won't interfere with
+                others.
               </li>
-              <li>No real bloat to speak of!</li>
+              <li>No support for @rules, pseudo-elements/classes!!</li>
+              <li>
+                DX is decent. Easy to locate contextual styles. Can be tough to
+                use with IDE tooling.
+              </li>
+              <li>
+                Only the CSS neccessary to style the element is used! However,
+                it bloats the DOM which is often uncached and no tooling
+                optimizations can be performed.
+              </li>
             </ul>
-            <div class="fragment">
-              <h4>Cons:</h4>
-              <ul>
-                <li>'@' rule support is non-existant</li>
-                <li>Pseudo class support is non-existant</li>
-                <li>Pseudo element support is non-existant</li>
-                <li>No style caching; styles live in your document</li>
-              </ul>
-            </div>
-            <aside class="notes">
-              <ul>
-                <li>
-                  <a
-                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/At-rule"
-                    >'@' rule support</a
-                  >
-                  is non-existant outside of media queries via matchMedia
-                </li>
-                <li>Supports :hover, :focus, :active via JS hacks</li>
-                <li>
-                  No support for other pseudo
-                  <a
-                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes"
-                    >classes</a
-                  >
-                  or
-                  <a
-                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements"
-                    >elements</a
-                  >
-                </li>
-              </ul>
-            </aside>
           </section>
         </section>
       </div>
