@@ -1013,6 +1013,10 @@ const shadow = shadowTarget.attachShadow({ mode: "open" });
                 The <code>css</code> export sucks in comparison the API-alike
                 alternatives.
               </li>
+              <li class="dx">
+                Stylelint rules can be weird as SSR renders inline
+                <code>&lt;style&gt;</code> blocks.
+              </li>
             </ul>
             <h4>styled-components as an Output:</h4>
             <ul class="iconlist">
@@ -1067,6 +1071,10 @@ render(
                 The DX is really good though files can get really long if poorly
                 organized.
               </li>
+              <li class="dx">
+                Stylelint rules can be weird as SSR renders inline
+                <code>&lt;style&gt;</code> blocks.
+              </li>
             </ul>
             <h4>Emotion as an Output:</h4>
             <ul class="iconlist">
@@ -1082,7 +1090,64 @@ render(
             </ul>
           </section>
 
-          <!-- Linaria
+          <section>
+            <h4>CSS-in-JS: Linaria</h4>
+            <ul style="font-size: 0.7em">
+              <li>
+                <a href="https://linaria.dev/">Linaria</a> is a another
+                CSS-in-JS with a very similar API to styled-components and
+                Emotion. It offers both <code>styled</code> components and the
+                ability to generate scoped classnames with <code>css</code>.
+              </li>
+              <li>
+                Linaria generates CSS files and leverages CSS Custom Properties
+                for dynamic styles. It also supports the usage of Preprocessors
+                (Sass) or Postprocessors (PostCSS) as it's syntax.
+              </li>
+            </ul>
+            <div style="display: flex; align-items: center; gap: 1em">
+              <img
+                src="linaria.svg"
+                alt="linaria"
+                style="aspect-ratio: 1; width: 6em"
+              />
+              <pre><code class="css">&lt;div
+  className={css`
+    padding: 32px;
+    background-color: hotpink;
+    border-radius: 4px;
+    &:hover { color: ${color}; }
+  `}
+&gt;
+  Hover to change color.
+&lt;/div&gt;
+</code></pre>
+            </div>
+          </section>
+          <section>
+            <h4>Linaria as an Input:</h4>
+            <ul class="iconlist">
+              <li class="man good">Easy to maintain; easy to refactor!</li>
+              <li class="dx good">
+                The DX is really good though files can get really long if poorly
+                organized.
+              </li>
+            </ul>
+            <h4>Emotion as an Output:</h4>
+            <ul class="iconlist">
+              <li class="sac good">CSS Modules-esque specificity handling!</li>
+              <li class="flex good">Easy to use across an application.</li>
+              <li class="flex">
+                Plays fairly well with others! Can run into collisions.
+              </li>
+              <li class="size bad">
+                Not zero-runtime. Ships a runtime in your browser to parse it's
+                proprietary syntax.
+              </li>
+            </ul>
+          </section>
+
+          <!-- 
 
 Vanilla Extract
 
