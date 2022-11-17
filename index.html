@@ -433,6 +433,109 @@ var styles = {
               </li>
             </ul>
           </section>
+          <section>
+            <h3>Semantic / Nested</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr">
+              <pre><code class="css">/* Sass */
+[role=tab] {
+  background: #fff;
+
+  &amp;[aria-selected=true] {
+    color: red;
+  }
+}</code></pre>
+              <pre><code class="css">/* ...or natively coming
+  soon to a browser near you! */
+div {
+  background: #fff;
+
+  &amp; .red {
+    color: blue;
+  }
+}</code></pre>
+            </div>
+          </section>
+          <section>
+            <h4>Semantic Convention:</h4>
+            <ul style="font-size: 0.7em">
+              <li>
+                Selectors should
+                <a
+                  href="https://alistapart.com/article/meaningful-css-style-like-you-mean-it/"
+                  >meaningfully</a
+                >
+                reflect your DOM, often without using classes.
+              </li>
+              <li>
+                Requires a solid understanding of HTML semantics, markup,
+                <a
+                  href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA"
+                  >ARIA</a
+                >, and
+                <a
+                  href="https://developer.mozilla.org/en-US/docs/Web/HTML/Microdata"
+                  >Microdata</a
+                >.
+              </li>
+              <pre><code class="css">[role=tab][aria-selected=true] {
+  background: #fff;
+}
+
+[itemscope][itemtype$="SoftwareApplication"] {
+  display: block;
+}
+
+form > p {
+  font-weight: bold;
+}</code></pre>
+            </ul>
+          </section>
+          <section>
+            <h4>Nested Tooling:</h4>
+            <ul style="font-size: 0.7em">
+              <li>
+                Currently not possible natively in browsers (outside of Chrome
+                with a feature flag) so we have to use tools.
+              </li>
+              <li>
+                Nested was popularized by Preprocessors, most notably Sass!
+              </li>
+              <li>
+                Can also be handled with Postprocessors like
+                <a href="https://github.com/postcss/postcss-nested">PostCSS</a>.
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h4>Semantic or Nested as an Output:</h4>
+            <ul class="iconlist">
+              <li class="sac">
+                Requires deep nesting / specificity to ensure there are no
+                conflicts. Somewhat alleviated when pursuing a semantic
+                approach.
+              </li>
+              <li class="man bad">
+                Difficult to maintain outside of the Shadow DOM (where this is a
+                great candidate).
+              </li>
+              <li class="flex bad">
+                Hard to mix with external libraries (without Cascade Layers).
+              </li>
+              <li class="dx">
+                No tooling required but tooling makes the selector salad a bit
+                easier to digest. If pursuing a semantic approach it requires
+                all devs touching the CSS to have deep knowledge of HTML.
+              </li>
+              <li class="size good">
+                If done perfectly, there's minimal to no class/style attributes
+                used in your markup!
+              </li>
+              <li class="size bad">
+                CSS bloats as structures are difficult to share. New components
+                require all new structures.
+              </li>
+            </ul>
+          </section>
         </section>
       </div>
     </div>
