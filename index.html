@@ -250,7 +250,7 @@
             <li class="fragment">
               Popular CSS Frameworks / Tooling
               <div class="fragment cssapproach">
-                <small>CSS Approaches</small> {
+                <small>CSS Methodology</small> {
               </div>
             </li>
           </ol>
@@ -334,7 +334,7 @@
         </section>
         <section>
           <section>
-            <h2>CSS Approaches</h2>
+            <h2>CSS Methodologies</h2>
           </section>
           <section>
             <h3>Inline</h3>
@@ -537,7 +537,7 @@ form > p {
             </ul>
           </section>
           <section>
-            <h3>Naming (BEM, SMACSS, etc.)</h3>
+            <h3>Naming</h3>
             <pre><code class="css">/* BEM Methodology */
 .button {
   border: 1px solid #D5D5D5;
@@ -552,6 +552,101 @@ form > p {
   color: #FFF;
   border-color: #4A993E;
 }</code></pre>
+          </section>
+          <section>
+            <h4>Naming Convention(s):</h4>
+            <ul style="font-size: 0.7em">
+              <li>
+                These types of conventions enforce strict authoring guidelines
+                to maintain specificity, typically by exclusively authoring your
+                styles with class selectors and pseudo class selectors (i.e. -
+                <pre
+                  style="display: inline"
+                ><code class="css" style="display:inline;">.button:hover</code></pre>
+                ).
+              </li>
+              <li>
+                The classes have no semantic value and no opinions on the
+                markup.
+              </li>
+              <li>
+                There have been many popular naming conventions over the years
+                (<a href="http://smacss.com/"
+                  ><abbr title="Scalable and Modular Architecture for CSS"
+                    >SMACSS</abbr
+                  ></a
+                >,
+                <a href="http://oocss.org/"
+                  ><abbr title="Object Oriented CSS">OOCSS</abbr></a
+                >,
+                <a href="https://itcss.io/"
+                  ><abbr title="Inverted Triangle CSS">ITCSS</abbr></a
+                >, etc.) but by far the most popular was
+                <a href="https://getbem.com/"
+                  ><abbr title="Block, Element, Modifier">BEM</abbr></a
+                >.
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h4>BEM:</h4>
+            <ul style="font-size: 0.7em">
+              <li>
+                Despite showing up over 15 years ago, BEM is still an extremely
+                popular approach to CSS.
+              </li>
+              <li>
+                <a href="https://avocss.dev/"
+                  ><abbr title="Attribute Value-Objects">AVO</abbr></a
+                >, a syntactive varient to BEM, leverages
+                <code>data-*</code> attributes and
+                <a
+                  href="https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors"
+                  >attribute selectors</a
+                >
+                to avoid class name collisions with external libraries.
+              </li>
+            </ul>
+            <pre><code class="css">/* Block */
+.button {
+  border: 1px solid #D5D5D5;
+}
+
+/* Element */
+.button__label {
+  text-transform: uppercase;
+}
+
+/* Modifier */
+.button--success {
+  border-color: #4A993E;
+}</code></pre>
+          </section>
+          <section>
+            <h4>Naming Frameworks:</h4>
+            <ul style="font-size: 0.7em">
+              <li>
+                There are many CSS Frameworks today that leverage some sort of
+                naming approach including:
+                <a href="https://getbootstrap.com/">Bootstrap</a>,
+                <a href="https://bulma.io/">Bulma</a>, and
+                <a href="https://materializecss.com/">Materialize</a>
+              </li>
+            </ul>
+            <pre><code class="html">&lt;!-- Bootstrap --&gt;
+&lt;div class="container"&gt;
+  &lt;div class="row"&gt;
+    &lt;div class="col-sm"&gt;
+      One of three columns
+    &lt;/div&gt;
+    &lt;div class="col-sm"&gt;
+      One of three columns
+    &lt;/div&gt;
+    &lt;div class="col-sm"&gt;
+      One of three columns
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
           </section>
         </section>
       </div>
