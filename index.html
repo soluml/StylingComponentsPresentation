@@ -743,7 +743,31 @@ div > .class > p {
 .default-class-name {
   composes: className from "./style.css";
   color: blue;
-}
+}</code></pre>
+          </section>
+          <section>
+            <h4>Scoped Tooling?: Shadow DOM</h4>
+            <ul style="font-size: 0.7em">
+              <li>
+                The
+                <a
+                  href="https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot"
+                  >Shadow DOM</a
+                >
+                can act as a methodology in and of itself!
+              </li>
+              <li>Requires JavaScript to run before showing in the browser.</li>
+              <li>
+                Inheritable properties (including Custom Properties!!!!!!!) are
+                inherited.
+              </li>
+              <li>Can be targeted outside via <code>::part</code>.</li>
+            </ul>
+            <pre><code class="js">/* Explicitly Global */
+const shadowTarget = document.getElementById("target");
+const shadow = shadowTarget.attachShadow({ mode: "open" });
+
+// ... attach DOM to shadow ...
 </code></pre>
           </section>
         </section>
