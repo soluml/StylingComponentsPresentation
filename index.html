@@ -205,60 +205,176 @@
           </ol>
         </section>
         <section>
-          <h3>Specificity</h3>
-          <blockquote style="font-size: 0.75em">
-            Specificity is the means by which browsers decide which CSS property
-            values are the most relevant to an element and, therefore, will be
-            applied.
-          </blockquote>
-          <hr />
-          <div class="cssinlineeditor" id="specificity">
-            <div id="example" class="example">I'm an example! √</div>
-          </div>
-        </section>
-        <section>
-          <h3>:where/:is</h3>
-          <blockquote style="font-size: 0.75em">
-            <code>:where</code> and <code>:is</code> are specificity
-            manipulating pseudo classes. Both match the containing elements.
-            However, <code>:where</code> eliminates the specificity of it's
-            contained selector whereas <code>:is</code> takes the maximum
-            selector value and adds it to the base selector.
-          </blockquote>
-          <hr />
-          <div class="cssinlineeditor" id="specificity2">
-            <div id="example2" class="example2">I'm an example 2! √</div>
-          </div>
-        </section>
-        <section>
-          <h3>Cascade Layers</h3>
-          <blockquote style="font-size: 0.75em">
-            Cascade <code>@layer</code>'s are a recent browser addition that
-            give you the ability to define layers of specificity for your
-            selectors. The order of precedence for layers is the order in which
-            layers are declared, named or not, and lower than the styles
-            declared outside of a layer.
-          </blockquote>
-          <hr />
-          <div class="cssinlineeditor" id="specificity3">
-            <div id="example3" class="example3">I'm an example 3! √</div>
-          </div>
-        </section>
-        <section>
-          <h3>Shadow DOM</h3>
-          <blockquote style="font-size: 0.55em">
-            The Shadow DOM allows hidden DOM trees to be attached to elements in
-            the regular DOM tree. Within these hidden DOM trees we can
-            encapsulate our styles. We can also choose to ingest outside styles
-            via the <code>::part</code> pseudo-element which represents an
-            element within a shadow tree that has a matching part attribute.
-          </blockquote>
-          <hr />
-          <div class="cssinlineeditor" id="specificity4">
-            <div>
-              <div id="example4" class="example4">I'm an example 4! √</div>
+          <section>
+            <h2>Concepts</h2>
+          </section>
+          <section>
+            <h3>Specificity</h3>
+            <blockquote style="font-size: 0.75em">
+              Specificity is the means by which browsers decide which CSS
+              property values are the most relevant to an element and,
+              therefore, will be applied.
+            </blockquote>
+            <hr />
+            <div class="cssinlineeditor" id="specificity">
+              <div id="example" class="example">I'm an example! √</div>
             </div>
-          </div>
+          </section>
+          <section>
+            <h3>:where/:is</h3>
+            <blockquote style="font-size: 0.75em">
+              <code>:where</code> and <code>:is</code> are specificity
+              manipulating pseudo classes. Both match the containing elements.
+              However, <code>:where</code> eliminates the specificity of it's
+              contained selector whereas <code>:is</code> takes the maximum
+              selector value and adds it to the base selector.
+            </blockquote>
+            <hr />
+            <div class="cssinlineeditor" id="specificity2">
+              <div id="example2" class="example2">I'm an example 2! √</div>
+            </div>
+          </section>
+          <section>
+            <h3>Cascade Layers</h3>
+            <blockquote style="font-size: 0.75em">
+              Cascade <code>@layer</code>'s are a recent browser addition that
+              give you the ability to define layers of specificity for your
+              selectors. The order of precedence for layers is the order in
+              which layers are declared, named or not, and lower than the styles
+              declared outside of a layer.
+            </blockquote>
+            <hr />
+            <div class="cssinlineeditor" id="specificity3">
+              <div id="example3" class="example3">I'm an example 3! √</div>
+            </div>
+          </section>
+          <section>
+            <h3>Shadow DOM</h3>
+            <blockquote style="font-size: 0.55em">
+              The Shadow DOM allows hidden DOM trees to be attached to elements
+              in the regular DOM tree. Within these hidden DOM trees we can
+              encapsulate our styles. We can also choose to ingest outside
+              styles via the <code>::part</code> pseudo-element which represents
+              an element within a shadow tree that has a matching part
+              attribute.
+            </blockquote>
+            <hr />
+            <div class="cssinlineeditor" id="specificity4">
+              <div>
+                <div id="example4" class="example4">I'm an example 4! √</div>
+              </div>
+            </div>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>CSS Approaches</h2>
+          </section>
+          <section>
+            <h3>Inline</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr">
+              <pre><code class="html">&lt;!-- HTML --&gt;
+&lt;div style="color:blue;"&gt;&lt;/div&gt;</code></pre>
+              <pre><code class="js">// React
+const styles = {
+  color: 'blue',
+};
+&lt;div style={styles} /&gt;
+</code></pre>
+            </div>
+          </section>
+
+          <section>
+            <h4>Inline as Inputs:</h4>
+            <div
+              style="
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                font-size: 0.7em;
+              "
+            >
+              <ul>
+                <li>Essentially immune to specificity and the cascade</li>
+                <li>Only the CSS neccessary to style the element is used</li>
+                <li>
+                  Extremely high maintainability! Easy to update AND refactor!
+                </li>
+              </ul>
+              <ul>
+                <li>Essentially immune to specificity and the cascade</li>
+                <li>Only the CSS neccessary to style the element is used</li>
+                <li>
+                  Extremely high maintainability! Easy to update AND refactor!
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <section>
+            <h4>Inline Breakdown:</h4>
+            <ul>
+              <li>
+                Inline conventions make use of the style attribute on HTML
+                elements:
+                <pre
+                  style="display: inline"
+                ><code class="html" style="display:inline;">&lt;div style="color:blue;"&gt;</code></pre>
+              </li>
+              <li>Only the CSS neccessary to style the element is used</li>
+              <li>
+                This convention was spurred on by SPA frameworks, most notably
+                React
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h3>Inline</h3>
+            <h4>Pros:</h4>
+            <ul>
+              <li>Essentially immune to specificity issues</li>
+              <li>
+                Extremely high maintainability! Easy to update AND refactor!
+              </li>
+              <li>
+                With tools like Radium, styles are easily reusable as a JS
+                object!
+              </li>
+              <li>No real bloat to speak of!</li>
+            </ul>
+            <div class="fragment">
+              <h4>Cons:</h4>
+              <ul>
+                <li>'@' rule support is non-existant</li>
+                <li>Pseudo class support is non-existant</li>
+                <li>Pseudo element support is non-existant</li>
+                <li>No style caching; styles live in your document</li>
+              </ul>
+            </div>
+            <aside class="notes">
+              <ul>
+                <li>
+                  <a
+                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/At-rule"
+                    >'@' rule support</a
+                  >
+                  is non-existant outside of media queries via matchMedia
+                </li>
+                <li>Supports :hover, :focus, :active via JS hacks</li>
+                <li>
+                  No support for other pseudo
+                  <a
+                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes"
+                    >classes</a
+                  >
+                  or
+                  <a
+                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements"
+                    >elements</a
+                  >
+                </li>
+              </ul>
+            </aside>
+          </section>
         </section>
       </div>
     </div>
