@@ -436,6 +436,7 @@ var styles = {
               </li>
             </ul>
           </section>
+
           <section>
             <h3>Semantic / Nested</h3>
             <div style="display: grid; grid-template-columns: 1fr 1fr">
@@ -552,6 +553,7 @@ div > .class > p {
               </li>
             </ul>
           </section>
+
           <section>
             <h3>Naming</h3>
             <pre><code class="css">/* BEM Methodology */
@@ -703,113 +705,7 @@ div > .class > p {
               </li>
             </ul>
           </section>
-          <section>
-            <h3>Scoped</h3>
-            <pre><code class="css">/* CSS Modules */
-:global {
-  .global-class-name {
-    color: green;
-  }
-}
 
-:local {
-  .scoped-class-name {
-    color: red;
-  }
-}</code></pre>
-          </section>
-          <section>
-            <h4>Scoped Tooling: CSS Modules</h4>
-            <ul style="font-size: 0.7em">
-              <li>
-                A
-                <a href="https://github.com/css-modules/css-modules"
-                  >CSS Module</a
-                >
-                is a CSS file in which all class names and animation names are
-                scoped locally by default.
-              </li>
-              <li>
-                CSS Modules compile to a low-level interchange format called
-                ICSS or
-                <a href="https://github.com/css-modules/icss"
-                  >Interoperable CSS</a
-                >, but are written like normal CSS files.
-              </li>
-              <li>
-                Has a <code>composes</code> property to establish class name
-                dependencies.
-              </li>
-            </ul>
-            <pre><code class="css">/* Explicitly Global */
-:global {
-  .global-class-name { color: green; }
-}
-/* Explicitly Local */
-:local {
-  .scoped-class-name { color: red; }
-}
-/* Tooling Default: Either Global or Local */
-.default-class-name {
-  composes: className from "./style.css";
-  color: blue;
-}</code></pre>
-          </section>
-          <section>
-            <h4>Scoped Tooling?: Shadow DOM</h4>
-            <ul style="font-size: 0.7em">
-              <li>
-                The
-                <a
-                  href="https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot"
-                  >Shadow DOM</a
-                >
-                can act as a methodology in and of itself!
-              </li>
-              <li>Requires JavaScript to run before showing in the browser.</li>
-              <li>
-                Inheritable properties (including Custom Properties!!!!!!!) are
-                inherited.
-              </li>
-              <li>Can be targeted outside via <code>::part</code>.</li>
-              <li>
-                Is leveraged in several JS Frameworks (see:
-                <a href="https://polymer-library.polymer-project.org/"
-                  >Polymer</a
-                >
-                and
-                <a href="https://angular.io/guide/view-encapsulation">Angular</a
-                >)
-              </li>
-            </ul>
-            <pre><code class="js">/* Explicitly Global */
-const shadowTarget = document.getElementById("target");
-const shadow = shadowTarget.attachShadow({ mode: "open" });
-
-// ... attach DOM to shadow ...
-</code></pre>
-          </section>
-          <section>
-            <h4>Scoped as an Input:</h4>
-            <ul class="iconlist">
-              <li class="man good">Easy to maintain; easy to refactor!</li>
-              <li class="dx good">The DX is really good.</li>
-              <li class="dx">
-                Requires build tooling or JavaScript in the browser.
-              </li>
-            </ul>
-            <h4>Scoped as an Output:</h4>
-            <ul class="iconlist">
-              <li class="sac good">Fantastic specificity handling!</li>
-              <li class="flex good">
-                Easy to use across an application. Plays well with others!
-              </li>
-              <li class="size">
-                It's not bad size wise! Can be even better than naming
-                conventions!
-              </li>
-            </ul>
-          </section>
           <section>
             <h3>Atomic / Functional</h3>
             <div style="display: flex; gap: 0.5em">
@@ -922,6 +818,7 @@ const shadow = shadowTarget.attachShadow({ mode: "open" });
               </li>
             </ul>
           </section>
+
           <section>
             <h3>CSS-in-JS</h3>
             <div style="display: flex; gap: 0.5em">
@@ -950,6 +847,137 @@ const hero = style({
 });</code></pre>
             </div>
           </section>
+
+          <section>
+            <h4>CSS-in-JS?: Shadow DOM</h4>
+            <ul style="font-size: 0.7em">
+              <li>
+                The
+                <a
+                  href="https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot"
+                  >Shadow DOM</a
+                >
+                can act as a methodology in and of itself!
+              </li>
+              <li>Requires JavaScript to run before showing in the browser.</li>
+              <li>
+                Inheritable properties (including Custom Properties!!!!!!!) are
+                inherited.
+              </li>
+              <li>Can be targeted outside via <code>::part</code>.</li>
+              <li>
+                Is leveraged in several JS Frameworks (see:
+                <a href="https://polymer-library.polymer-project.org/"
+                  >Polymer</a
+                >
+                and
+                <a href="https://angular.io/guide/view-encapsulation">Angular</a
+                >)
+              </li>
+            </ul>
+            <pre><code class="js">/* Explicitly Global */
+const shadowTarget = document.getElementById("target");
+const shadow = shadowTarget.attachShadow({ mode: "open" });
+
+// ... attach DOM to shadow ...
+</code></pre>
+          </section>
+          <section>
+            <h4>Shadow DOM as an Input:</h4>
+            <ul class="iconlist">
+              <li class="man good">Easy to maintain; easy to refactor!</li>
+              <li class="dx">
+                DX is not bad. It's styles are typically co-located in the same
+                directory. You probably want to pair with a convention.
+              </li>
+            </ul>
+            <h4>Shadow DOM as an Output:</h4>
+            <ul class="iconlist">
+              <li class="sac good">Perfect specificity handling!</li>
+              <li class="flex good">
+                Can be used anywhere and has no conflicts with 3rd party
+                libraries!
+              </li>
+              <li class="flex bad">
+                Requires JavaScript to download and run before showing in the
+                browser.
+              </li>
+              <li class="size">
+                It's ok size wise. Can be poor if not properly sharing styles
+                between components.
+              </li>
+            </ul>
+          </section>
+
+          <section>
+            <h4>CSS-in-JS: CSS Modules</h4>
+            <ul style="font-size: 0.7em">
+              <li>
+                A
+                <a href="https://github.com/css-modules/css-modules"
+                  >CSS Module</a
+                >
+                is a CSS file in which all class names and animation names are
+                scoped locally by default.
+              </li>
+              <li>
+                CSS Modules compile to a low-level interchange format called
+                ICSS or
+                <a href="https://github.com/css-modules/icss"
+                  >Interoperable CSS</a
+                >, but are written like normal CSS files.
+              </li>
+              <li>
+                Has a <code>composes</code> property to establish class name
+                dependencies.
+              </li>
+            </ul>
+            <pre><code class="css">/* Explicitly Global */
+:global {
+  .global-class-name { color: green; }
+}
+/* Explicitly Local */
+:local {
+  .scoped-class-name { color: red; }
+}
+/* Tooling Default: Either Global or Local */
+.default-class-name {
+  composes: className from "./style.css";
+  color: blue;
+}</code></pre>
+          </section>
+          <section>
+            <h4>CSS Modules as an Input:</h4>
+            <ul class="iconlist">
+              <li class="man good">Easy to maintain; easy to refactor!</li>
+              <li class="dx good">The DX is really good.</li>
+            </ul>
+            <h4>Scoped as an Output:</h4>
+            <ul class="iconlist">
+              <li class="sac good">Fantastic specificity handling!</li>
+              <li class="flex good">Easy to use across an application.</li>
+              <li class="flex">
+                Plays fairly well with others! Can run into collisions.
+              </li>
+              <li class="size">
+                It's not bad size wise! Can be even better than naming
+                conventions!
+              </li>
+            </ul>
+          </section>
+
+          <!-- <section>
+            <h4>CSS Convention:</h4>
+            <ul>
+              <li>
+                Inline conventions make use of the style attribute on HTML
+                elements:
+                <pre
+                  style="display: inline"
+                ><code class="html" style="display:inline;">&lt;div style="color:blue;"&gt;</code></pre>
+              </li>
+            </ul>
+          </section> -->
         </section>
       </div>
     </div>
