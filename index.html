@@ -1153,9 +1153,86 @@ render(
             </ul>
           </section>
 
+          <section>
+            <h4>CSS-in-JS: vanilla-extract</h4>
+            <ul style="font-size: 0.7em">
+              <li>
+                <a href="https://vanilla-extract.style/">vanilla-extract</a>
+                takes a different approach to CSS-in-JS in that it constructs
+                styles in a very inline-esque manner where styles are
+                constructed with JS objects.
+              </li>
+              <li>
+                This syntax allows you to write type-safe, locally scoped
+                classes, variables and themes, then generate static CSS files at
+                build time.
+              </li>
+            </ul>
+            <div style="display: flex; align-items: center; gap: 1em">
+              <img
+                src="vanillaextract.svg"
+                alt="vanilla-extract"
+                style="aspect-ratio: 1; width: 6em"
+              />
+              <pre><code class="js">// styles.css.ts
+import { createTheme, style } from '@vanilla-extract/css';
+
+export const [themeClass, vars] = createTheme({
+  color: {
+    brand: 'blue',
+    white: '#fff'
+  },
+  space: {
+    small: '4px',
+    medium: '8px',
+  }
+});
+
+export const hero = style({
+  backgroundColor: vars.color.brandd, // Type Error
+  color: vars.color.white,
+  padding: vars.space.large // Type Error
+});</code></pre>
+            </div>
+          </section>
+          <section>
+            <h4>vanilla-extract as an Input:</h4>
+            <ul class="iconlist">
+              <li class="man good">Easy to maintain; easy to refactor!</li>
+              <li class="dx good">
+                The DX is really good; eschews styled components for
+                "StyleSheets in JS".
+              </li>
+              <li class="dx good">Typed Styles!</li>
+              <li class="dx good">
+                First class themeing via themes and variants!
+              </li>
+              <li class="dx">Inline style can limit IDE linting features</li>
+            </ul>
+            <h4>vanilla-extract as an Output:</h4>
+            <ul class="iconlist">
+              <li class="sac good">
+                CSS Modules-esque (or Atomic-esque) specificity handling!
+              </li>
+              <li class="flex good">Easy to use across an application.</li>
+              <li class="flex">
+                Plays fairly well with others! Can run into collisions.
+              </li>
+              <li class="size good">Zero-runtime!!!!!</li>
+              <li class="size good">
+                Has a
+                <a
+                  href="https://vanilla-extract.style/documentation/packages/sprinkles/"
+                  >Sprinkles</a
+                >
+                package for even smaller CSS files via Atomic output!!!
+              </li>
+            </ul>
+          </section>
+
           <!-- 
 
-Vanilla Extract
+
 
 StyleX -->
         </section>
