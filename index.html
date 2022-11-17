@@ -406,14 +406,21 @@ var styles = {
             </div>
           </section>
           <section>
+            <h4>Inline as an Input:</h4>
+            <ul class="iconlist">
+              <li class="man good">
+                Extremely high maintainability! Easy to update AND refactor!
+              </li>
+              <li class="dx">
+                DX is decent. Easy to locate contextual styles. Can be tough to
+                use with IDE tooling. Can be typed with TypeScript!
+              </li>
+            </ul>
             <h4>Inline as an Output:</h4>
             <ul class="iconlist">
               <li class="sac good">
                 High specificity means Inline Styles are essentially immune to
                 specificity and cascade issues!
-              </li>
-              <li class="man good">
-                Extremely high maintainability! Easy to update AND refactor!
               </li>
               <li class="flex">
                 Hard to augment with external libraries but won't interfere with
@@ -422,11 +429,7 @@ var styles = {
               <li class="flex bad">
                 No support for @rules, pseudo-elements/classes!!
               </li>
-              <li class="dx">
-                DX is decent. Easy to locate contextual styles. Can be tough to
-                use with IDE tooling. Can be typed with TypeScript!
-              </li>
-              <li class="size">
+              <li class="size bad">
                 Only the CSS neccessary to style the element is used! However,
                 it bloats the DOM which is often uncached and no tooling
                 optimizations can be performed.
@@ -517,6 +520,18 @@ div > .class > p {
             </ul>
           </section>
           <section>
+            <h4>Semantic or Nested as an Input:</h4>
+            <ul class="iconlist">
+              <li class="man bad">
+                Difficult to maintain outside of the Shadow DOM (where this is a
+                great candidate).
+              </li>
+              <li class="dx">
+                No tooling required but tooling makes the selector salad a bit
+                easier to digest. If pursuing a semantic approach it requires
+                all devs touching the CSS to have deep knowledge of HTML.
+              </li>
+            </ul>
             <h4>Semantic or Nested as an Output:</h4>
             <ul class="iconlist">
               <li class="sac">
@@ -524,17 +539,8 @@ div > .class > p {
                 conflicts. Somewhat alleviated when pursuing a semantic
                 approach.
               </li>
-              <li class="man bad">
-                Difficult to maintain outside of the Shadow DOM (where this is a
-                great candidate).
-              </li>
               <li class="flex bad">
                 Hard to mix with external libraries (without Cascade Layers).
-              </li>
-              <li class="dx">
-                No tooling required but tooling makes the selector salad a bit
-                easier to digest. If pursuing a semantic approach it requires
-                all devs touching the CSS to have deep knowledge of HTML.
               </li>
               <li class="size good">
                 If done perfectly, there's minimal to no class/style attributes
@@ -671,6 +677,14 @@ div > .class > p {
 &lt;/div&gt;</code></pre>
           </section>
           <section>
+            <h4>Naming as an Input:</h4>
+            <ul class="iconlist">
+              <li class="man good">Easy to maintain; easy to refactor!</li>
+              <li class="dx bad">
+                The DX blows. Naming things is hard! Requires good linting or
+                PRs are a bad time.
+              </li>
+            </ul>
             <h4>Naming as an Output:</h4>
             <ul class="iconlist">
               <li class="sac good">
@@ -678,15 +692,10 @@ div > .class > p {
                 handling.<br /><code>:where</code>/<code>:is</code> make
                 modifiers even easier. Beware the cascade!
               </li>
-              <li class="man good">Easy to maintain; easy to refactor!</li>
               <li class="flex good">Easy to use across an application.</li>
               <li class="flex">
                 May conflict with other naming conventions around an
                 organization or in 3rd party libraries.
-              </li>
-              <li class="dx bad">
-                The DX blows. Naming things is hard! Requires good linting or
-                PRs will be a bad time.
               </li>
               <li class="size">
                 It's ok size wise! Class names can get large but Gzip likes
@@ -772,16 +781,19 @@ const shadow = shadowTarget.attachShadow({ mode: "open" });
 </code></pre>
           </section>
           <section>
+            <h4>Scoped as an Input:</h4>
+            <ul class="iconlist">
+              <li class="man good">Easy to maintain; easy to refactor!</li>
+              <li class="dx good">The DX is really good.</li>
+              <li class="dx">
+                Requires build tooling or JavaScript in the browser.
+              </li>
+            </ul>
             <h4>Scoped as an Output:</h4>
             <ul class="iconlist">
               <li class="sac good">Fantastic specificity handling!</li>
-              <li class="man good">Easy to maintain; easy to refactor!</li>
               <li class="flex good">
                 Easy to use across an application. Plays well with others!
-              </li>
-              <li class="dx good">The DX is really good.</li>
-              <li class="dx">
-                Requires a build or requires JavaScript in the browser.
               </li>
               <li class="size">
                 It's not bad size wise! Can be even better than naming
@@ -892,7 +904,8 @@ const shadow = shadowTarget.attachShadow({ mode: "open" });
               <li class="flex good">Can coincide with 3rd party libraries.</li>
               <li class="flex bad">
                 Hard to share atomically styled components across an
-                organization unless they too are doing atomic.
+                organization unless they too are doing atomic and/or you can
+                leverage cascade layers.
               </li>
               <li class="size good">
                 Amazing!!! Far and away the best output for size!
