@@ -424,7 +424,7 @@ var styles = {
               </li>
               <li class="dx">
                 DX is decent. Easy to locate contextual styles. Can be tough to
-                use with IDE tooling.
+                use with IDE tooling. Can be typed with TypeScript!
               </li>
               <li class="size">
                 Only the CSS neccessary to style the element is used! However,
@@ -788,6 +788,64 @@ const shadow = shadowTarget.attachShadow({ mode: "open" });
                 conventions!
               </li>
             </ul>
+          </section>
+          <section>
+            <h3>Atomic / Functional</h3>
+            <div style="display: flex; gap: 0.5em">
+              <pre><code class="html">&lt;!-- Atomic w/Atomizer --&gt;
+&lt;div class="Bgc(#000) C(#fff)"&gt;
+  Lorem ipsum
+&lt;/div&gt;</code></pre>
+              <pre><code style="overflow: visible;" class="css">/* Utility Classes */        
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
+
+.visuallycenter {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}</code></pre>
+            </div>
+          </section>
+          <section>
+            <h4>Atomic Convention:</h4>
+            <ul style="font-size: 0.7em">
+              <li>Exclusively leverages class selectors and pseudo's.</li>
+              <li>
+                Single Responsibility Principle meets CSS. Each class does one
+                thing and only that thing.
+              </li>
+              <li>Atomic rules are immutable.</li>
+              <li>Near impossible to do well without tooling. So don't!</li>
+            </ul>
+          </section>
+          <section>
+            <h4>Atomic Tooling:</h4>
+            <ul style="font-size: 0.7em">
+              <li>
+                Atomic tooling typically generates CSS from markup/files looking
+                for specific class patterns.
+              </li>
+              <li>
+                Once the tooling is configured, you write class names, not CSS.
+              </li>
+              <li>
+                <a href="https://acss.io/">Atomizer</a> is a popular
+                Framework-less Atomic tool that will generate CSS for you based
+                on prefined class names within your markup. Has several
+                integrations.
+              </li>
+            </ul>
+            <img
+              src="atomic-demo.gif"
+              style="aspect-ratio: 174/83; height: 30vh"
+            />
           </section>
         </section>
       </div>
