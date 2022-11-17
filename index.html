@@ -456,7 +456,7 @@ div {
             </div>
           </section>
           <section>
-            <h4>Semantic Convention:</h4>
+            <h4>Semantic / Nested Convention:</h4>
             <ul style="font-size: 0.7em">
               <li>
                 Selectors should
@@ -465,6 +465,10 @@ div {
                   >meaningfully</a
                 >
                 reflect your DOM, often without using classes.
+              </li>
+              <li>
+                Nested conventions are essentially the same but describe the
+                DOM's shape and use any/all selectors.
               </li>
               <li>
                 Requires a solid understanding of HTML semantics, markup,
@@ -477,7 +481,8 @@ div {
                   >Microdata</a
                 >.
               </li>
-              <pre><code class="css">[role=tab][aria-selected=true] {
+              <pre><code class="css">/* Ooooh.. semantic! */
+[role=tab][aria-selected=true] {
   background: #fff;
 }
 
@@ -487,6 +492,11 @@ div {
 
 form > p {
   font-weight: bold;
+}
+
+/* Ooooh.. lazy! */
+div > .class > p {
+  text-align: center;
 }</code></pre>
             </ul>
           </section>
@@ -563,6 +573,14 @@ form > p {
                 <pre
                   style="display: inline"
                 ><code class="css" style="display:inline;">.button:hover</code></pre>
+                ).
+              </li>
+              <li>
+                Pseudo-class specificity can be negated with
+                <code>:where</code> (
+                <pre
+                  style="display: inline"
+                ><code class="css" style="display:inline;">.button:where(:hover)</code></pre>
                 ).
               </li>
               <li>
@@ -652,8 +670,9 @@ form > p {
             <h4>Naming as an Output:</h4>
             <ul class="iconlist">
               <li class="sac good">
-                Strict adherence typically results in perfect specificity
-                handling.<br />Beware the cascade!
+                Strict adherence typically results in near-perfect specificity
+                handling.<br /><code>:where</code>/<code>:is</code> make
+                modifiers even easier. Beware the cascade!
               </li>
               <li class="man good">Easy to maintain; easy to refactor!</li>
               <li class="flex good">Easy to use across an application.</li>
