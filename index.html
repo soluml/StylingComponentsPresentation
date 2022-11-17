@@ -1230,11 +1230,65 @@ export const hero = style({
             </ul>
           </section>
 
-          <!-- 
+          <section>
+            <h4>CSS-in-JS: StyleX</h4>
+            <ul style="font-size: 0.7em">
+              <li>
+                <a href="https://stylex-docusaurus-nmn.vercel.app/">StyleX</a>
+                is a brand-new (still in alpha) CSS-in-JS tool from Meta
+                (Facebook) Open Source.
+              </li>
+              <li>
+                The inline-esque syntax grants TypeScript support and it focuses
+                on simplicity/speed over features.
+              </li>
+            </ul>
+            <div style="display: flex; align-items: center; gap: 1em">
+              <img
+                src="stylex.png"
+                alt="StyleX"
+                style="aspect-ratio: 350/237; width: 6em"
+              />
+              <pre><code class="js">import stylex from '@stylexjs/stylex';
 
+const styles = stylex.create({
+  container: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: '1rem',
+  }
+});
 
-
-StyleX -->
+&lt;div className={stylex(styles.container)} /&gt;</code></pre>
+            </div>
+          </section>
+          <section>
+            <h4>StyleX as an Input:</h4>
+            <ul class="iconlist">
+              <li class="man good">Easy to maintain; easy to refactor!</li>
+              <li class="man good">Supported by Meta/Facebook!</li>
+              <li class="man bad">Still Alpha!</li>
+              <li class="dx good">
+                The DX is really good; eschews styled components for "React
+                Inline Styles".
+              </li>
+              <li class="dx good">Typed Styles!</li>
+              <li class="dx">Inline style can limit IDE linting features</li>
+            </ul>
+            <h4>vanilla-extract as an Output:</h4>
+            <ul class="iconlist">
+              <li class="sac good">Atomic-esque specificity handling!</li>
+              <li class="flex good">Easy to use across an application.</li>
+              <li class="flex">
+                Plays fairly well with others! Can run into collisions.
+              </li>
+              <li class="size good">Zero-runtime!!!!!</li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <h2>Thanks for coming!<br />You made it! 🎉<br />Any Questions?</h2>
         </section>
       </div>
     </div>
