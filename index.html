@@ -981,7 +981,11 @@ const shadow = shadowTarget.attachShadow({ mode: "open" });
               </li>
             </ul>
             <div style="display: flex; align-items: center; gap: 1em">
-              <img src="styledcomponents.png" alt="styled components" />
+              <img
+                src="styledcomponents.png"
+                alt="styled components"
+                style="aspect-ratio: 1; width: 6em"
+              />
               <pre><code class="css">const Button = styled.a`
   display: inline-block;
   border-radius: 3px;
@@ -1018,8 +1022,62 @@ const shadow = shadowTarget.attachShadow({ mode: "open" });
                 Plays fairly well with others! Can run into collisions.
               </li>
               <li class="size bad">
-                Ships a runtime in your browser to parse it's proprietary
-                syntax.
+                Not zero-runtime. Ships a runtime in your browser to parse it's
+                proprietary syntax.
+              </li>
+            </ul>
+          </section>
+
+          <section>
+            <h4>CSS-in-JS: Emotion</h4>
+            <ul style="font-size: 0.7em">
+              <li>
+                <a href="https://emotion.sh/">Emotion</a>
+                capitalized on the success of styled-components and produced a
+                largely superior competitor.
+              </li>
+            </ul>
+            <div style="display: flex; align-items: center; gap: 1em">
+              <img
+                src="emotion.png"
+                alt="emotion"
+                style="aspect-ratio: 1; width: 6em"
+              />
+              <pre><code class="css">const color = 'white'
+
+render(
+  &lt;div
+    className={css`
+      padding: 32px;
+      background-color: hotpink;
+      border-radius: 4px;
+      &:hover { color: ${color}; }
+    `}
+  &gt;
+    Hover to change color.
+  &lt;/div&gt;
+);</code></pre>
+            </div>
+          </section>
+          <section>
+            <h4>Emotion as an Input:</h4>
+            <ul class="iconlist">
+              <li class="man good">Easy to maintain; easy to refactor!</li>
+              <li class="dx good">
+                The DX is really good though files can get really long if poorly
+                organized.
+              </li>
+            </ul>
+            <h4>Emotion as an Output:</h4>
+            <ul class="iconlist">
+              <li class="sac good">CSS Modules-esque specificity handling!</li>
+              <li class="flex good">Easy to use across an application.</li>
+              <li class="flex">
+                Plays fairly well with others! Can run into collisions.
+              </li>
+              <li class="size bad">
+                Not zero-runtime. Ships a runtime in your browser to parse it's
+                proprietary syntax.
               </li>
             </ul>
           </section>
