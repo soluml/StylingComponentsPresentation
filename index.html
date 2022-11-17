@@ -588,6 +588,10 @@ div > .class > p {
                 markup.
               </li>
               <li>
+                <a href="http://www.csszengarden.com/">CSS Zen Garden</a> is a
+                testament to the usability of semantic class names.
+              </li>
+              <li>
                 There have been many popular naming conventions over the years
                 (<a href="http://smacss.com/"
                   ><abbr title="Scalable and Modular Architecture for CSS"
@@ -688,6 +692,21 @@ div > .class > p {
                 It's ok! Class names can get large but Gzip likes repetition.
               </li>
             </ul>
+          </section>
+          <section>
+            <h3>Scoped</h3>
+            <pre><code class="css">/* CSS Modules */
+:global {
+  .global-class-name {
+    color: green;
+  }
+}
+
+:local {
+  .scoped-class-name {
+    color: red;
+  }
+}</code></pre>
           </section>
         </section>
       </div>
