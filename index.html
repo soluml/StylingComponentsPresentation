@@ -925,25 +925,29 @@ const shadow = shadowTarget.attachShadow({ mode: "open" });
           <section>
             <h3>CSS-in-JS</h3>
             <div style="display: flex; gap: 0.5em">
-              <pre><code class="html">&lt;!-- Atomic w/Atomizer --&gt;
-&lt;div class="Bgc(#000) C(#fff)"&gt;
-  Lorem ipsum
-&lt;/div&gt;</code></pre>
-              <pre><code style="overflow: visible;" class="css">/* Utility Classes */        
-.show {
-  display: block;
-}
+              <pre><code class="js">// Styled Components
+  import styled from 'styled-components';
 
-.hide {
-  display: none;
-}
+  const Button = styled.button`
+    font-size: 1em;
+    margin: 1em;
+    padding: 0.25em 1em;
+    border: 2px solid red;
+    border-radius: 3px;
+    background: ${p => p.primary && 'red'};
+`;</code></pre>
+              <pre><code class="js">// Vanilla Extract
+import { createTheme, style }
+  from '@vanilla-extract/css';
 
-.visuallycenter {
-  position: relative;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}</code></pre>
+const [themeClass, vars] = createTheme({
+  color: { brand: 'blue', white: '#fff' },
+});
+
+const hero = style({
+  backgroundColor: vars.color.brandd,
+  color: vars.color.white,
+});</code></pre>
             </div>
           </section>
         </section>
